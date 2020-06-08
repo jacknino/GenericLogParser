@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{716C9078-AFA9-4423-83A4-E2BA12A60995}") = "GenericLogParser", "GenericLogParser.csproj", "{1053E0C8-8E83-4C88-9251-D6CD8FFF57B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1053E0C8-8E83-4C88-9251-D6CD8FFF57B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1053E0C8-8E83-4C88-9251-D6CD8FFF57B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1053E0C8-8E83-4C88-9251-D6CD8FFF57B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1053E0C8-8E83-4C88-9251-D6CD8FFF57B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
