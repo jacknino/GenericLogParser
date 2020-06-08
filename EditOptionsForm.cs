@@ -210,7 +210,8 @@ namespace GenericLogParser
                 comment,
                 exampleInput);
 
-            SaveOptionsForm.Show(saveOptionsData);
+            string something = "";
+            SaveOptionsForm.Show(saveOptionsData, ref something);
         }
     }
 }

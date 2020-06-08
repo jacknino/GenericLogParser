@@ -91,12 +91,14 @@ namespace GenericLogParser
 
         private void buttonSelectInputFile_Click(object sender, EventArgs e)
         {
-            string[] fileArray = SelectFiles(textBoxInputFile.Text, "", true);
+            string initialDirectory = Properties.Settings.Default.LastInputFileDirectory;
+            string[] fileArray = SelectFiles(initialDirectory, textBoxInputFile.Text, "", true);
 
             if (fileArray != null)
             {
                 listBoxInputFiles.Items.Clear();
                 textBoxOutputFile.Text = GenerateOutputFileName(fileArray[0]);
+                Properties.Settings.Default.LastInputFileDirectory = Path.GetDirectoryName(fileArray[0]);
 
                 foreach (string strFile in fileArray)
                 {
@@ -136,22 +138,23 @@ namespace GenericLogParser
 
         private void buttonSelectOutputFile_Click(object sender, EventArgs e)
         {
-            textBoxOutputFile.Text = SelectFile(textBoxOutputFile.Text, "", false);
+            textBoxOutputFile.Text = SelectFile("", textBoxOutputFile.Text, "", false);
         }
 
-        private string SelectFile(string fileName, string filter, bool fileMustExist)
+        private string SelectFile(string initialDirectory, string fileName, string filter, bool fileMustExist)
         {
-            OpenFileDialog openFileDialog = SetupAndShowOpenFileDialog(fileName, filter, fileMustExist, false);
+            OpenFileDialog openFileDialog = SetupAndShowOpenFileDialog(initialDirectory, fileName, filter, fileMustExist, false);
             return (openFileDialog != null ? openFileDialog.FileName : null);
         }
 
-        private string[] SelectFiles(string fileName, string filter, bool fileMustExist)
+        private string[] SelectFiles(string initialDirectory, string fileName, string filter, bool fileMustExist)
         {
-            OpenFileDialog openFileDialog = SetupAndShowOpenFileDialog(fileName, filter, fileMustExist, true);
+            OpenFileDialog openFileDialog = SetupAndShowOpenFileDialog(initialDirectory, fileName, filter, fileMustExist, true);
             return (openFileDialog != null ? openFileDialog.FileNames : null);
         }
 
         private OpenFileDialog SetupAndShowOpenFileDialog(
+            string initialDirectory,
             string fileName,
             string filter,
             bool fileMustExist,
@@ -161,6 +164,9 @@ namespace GenericLogParser
                 filter = "Log Files (*.log; *.txt)|*.log;*.txt|All Files (*.*)|*.*";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (!string.IsNullOrEmpty(initialDirectory))
+                openFileDialog.InitialDirectory = initialDirectory;
+
             openFileDialog.CheckFileExists = fileMustExist;
             openFileDialog.Filter = filter;
             openFileDialog.FileName = fileName;
@@ -175,10 +181,12 @@ namespace GenericLogParser
         private void buttonLoadOptions_Click(object sender, EventArgs e)
         {
             const string filter = "Parse Config Files (*.parseconfig)|*.parseconfig|All Files (*.*)|*.*";
-            string inputFileName = SelectFile("", filter, true);
+            string initialDirectory = Properties.Settings.Default.LastParseConfigFileDirectory;
+            string inputFileName = SelectFile(initialDirectory, "", filter, true);
             if (string.IsNullOrEmpty(inputFileName))
                 return;
 
+            Properties.Settings.Default.LastParseConfigFileDirectory = Path.GetDirectoryName(inputFileName);
             XmlSerializer serializer = new XmlSerializer(typeof(SaveOptionsData));
             SaveOptionsData saveOptionsData;
             using (TextReader textReader = new StreamReader(inputFileName))
@@ -342,11 +350,13 @@ namespace GenericLogParser
         private void buttonAddIncludeStatementToList_Click(object sender, System.EventArgs e)
         {
             listBoxStatementsToInclude.Items.Add(textBoxSearchIncludeText.Text);
+            textBoxSearchIncludeText.Text = "";
         }
 
         private void buttonAddExcludeStatementToList_Click(object sender, EventArgs e)
         {
             listBoxStatementsToExclude.Items.Add(textBoxSearchExcludeText.Text);
+            textBoxSearchExcludeText.Text = "";
         }
 
         private void buttonClearIncludeList_Click(object sender, System.EventArgs e)
@@ -445,7 +455,31 @@ namespace GenericLogParser
                 comment,
                 exampleInput);
 
-            SaveOptionsForm.Show(saveOptionsData);
+            string saveDirectory = Properties.Settings.Default.LastParseConfigFileDirectory;
+            if (SaveOptionsForm.Show(saveOptionsData, ref saveDirectory) == DialogResult.OK)
+                Properties.Settings.Default.LastParseConfigFileDirectory = saveDirectory;
+        }
+
+        private void textBoxSearchIncludeText_Enter(object sender, EventArgs e)
+        {
+            AcceptButton = buttonAddIncludeStatementToList;
+        }
+
+        private void textBoxSearchIncludeText_Leave(object sender, EventArgs e)
+        {
+            if (AcceptButton == buttonAddIncludeStatementToList)
+                AcceptButton = buttonApplyFilter;
+        }
+
+        private void textBoxSearchExcludeText_Enter(object sender, EventArgs e)
+        {
+            AcceptButton = buttonAddExcludeStatementToList;
+        }
+
+        private void textBoxSearchExcludeText_Leave(object sender, EventArgs e)
+        {
+            if (AcceptButton == buttonAddExcludeStatementToList)
+                AcceptButton = buttonApplyFilter;
         }
     }
 }

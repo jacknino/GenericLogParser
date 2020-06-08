@@ -8,17 +8,21 @@ namespace GenericLogParser
     public partial class SaveOptionsForm : Form
     {
         private readonly SaveOptionsData _saveOptionsData;
+        private string _saveDirectory;
 
-        public static DialogResult Show(SaveOptionsData saveOptionsData)
+        public static DialogResult Show(SaveOptionsData saveOptionsData, ref string saveDirectory)
         {
-            SaveOptionsForm saveOptionsForm = new SaveOptionsForm(saveOptionsData);
+            SaveOptionsForm saveOptionsForm = new SaveOptionsForm(saveOptionsData, saveDirectory);
             DialogResult dialogResult = saveOptionsForm.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+                saveDirectory = saveOptionsForm._saveDirectory;
             return dialogResult;
         }
 
-        public SaveOptionsForm(SaveOptionsData saveOptionsData)
+        public SaveOptionsForm(SaveOptionsData saveOptionsData, string saveDirectory)
         {
             _saveOptionsData = saveOptionsData;
+            _saveDirectory = saveDirectory;
 
             InitializeComponent();
         }
@@ -39,6 +43,8 @@ namespace GenericLogParser
             string filter = "Parse Config Files (*.parseconfig)|*.parseconfig|All Files (*.*)|*.*";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (!string.IsNullOrEmpty(_saveDirectory))
+                openFileDialog.InitialDirectory = _saveDirectory;
             openFileDialog.CheckFileExists = false;
             openFileDialog.Filter = filter;
             openFileDialog.FileName = fileName;
@@ -76,7 +82,8 @@ namespace GenericLogParser
                 serializer.Serialize(textWriter, _saveOptionsData);
                 textWriter.Close();
 
-                MessageBox.Show("Options save to " + textBoxOutputFile.Text, "Save Options", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Options saved to " + textBoxOutputFile.Text, "Save Options", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _saveDirectory = Path.GetDirectoryName(textBoxOutputFile.Text);
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

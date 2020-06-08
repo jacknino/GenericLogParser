@@ -115,7 +115,7 @@ namespace GenericLogParser
             this.listBoxStatementsToInclude.Name = "listBoxStatementsToInclude";
             this.listBoxStatementsToInclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxStatementsToInclude.Size = new System.Drawing.Size(616, 95);
-            this.listBoxStatementsToInclude.TabIndex = 9;
+            this.listBoxStatementsToInclude.TabIndex = 10;
             this.listBoxStatementsToInclude.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxSearches_KeyUp);
             // 
             // buttonApplyFilter
@@ -124,7 +124,7 @@ namespace GenericLogParser
             this.buttonApplyFilter.Location = new System.Drawing.Point(636, 496);
             this.buttonApplyFilter.Name = "buttonApplyFilter";
             this.buttonApplyFilter.Size = new System.Drawing.Size(108, 24);
-            this.buttonApplyFilter.TabIndex = 18;
+            this.buttonApplyFilter.TabIndex = 21;
             this.buttonApplyFilter.Text = "Apply &Filter";
             this.buttonApplyFilter.Click += new System.EventHandler(this.buttonApplyFilter_Click);
             // 
@@ -134,7 +134,7 @@ namespace GenericLogParser
             this.buttonAddIncludeStatementToList.Location = new System.Drawing.Point(636, 189);
             this.buttonAddIncludeStatementToList.Name = "buttonAddIncludeStatementToList";
             this.buttonAddIncludeStatementToList.Size = new System.Drawing.Size(108, 24);
-            this.buttonAddIncludeStatementToList.TabIndex = 8;
+            this.buttonAddIncludeStatementToList.TabIndex = 9;
             this.buttonAddIncludeStatementToList.Text = "&Add To List";
             this.buttonAddIncludeStatementToList.Click += new System.EventHandler(this.buttonAddIncludeStatementToList_Click);
             // 
@@ -144,7 +144,7 @@ namespace GenericLogParser
             this.buttonClearIncludeList.Location = new System.Drawing.Point(636, 232);
             this.buttonClearIncludeList.Name = "buttonClearIncludeList";
             this.buttonClearIncludeList.Size = new System.Drawing.Size(108, 24);
-            this.buttonClearIncludeList.TabIndex = 10;
+            this.buttonClearIncludeList.TabIndex = 11;
             this.buttonClearIncludeList.Text = "&Clear List";
             this.buttonClearIncludeList.Click += new System.EventHandler(this.buttonClearIncludeList_Click);
             // 
@@ -154,7 +154,7 @@ namespace GenericLogParser
             this.buttonSelectOutputFile.Location = new System.Drawing.Point(720, 135);
             this.buttonSelectOutputFile.Name = "buttonSelectOutputFile";
             this.buttonSelectOutputFile.Size = new System.Drawing.Size(24, 20);
-            this.buttonSelectOutputFile.TabIndex = 4;
+            this.buttonSelectOutputFile.TabIndex = 5;
             this.buttonSelectOutputFile.Text = "&...";
             this.buttonSelectOutputFile.Click += new System.EventHandler(this.buttonSelectOutputFile_Click);
             // 
@@ -165,7 +165,7 @@ namespace GenericLogParser
             this.textBoxOutputFile.Location = new System.Drawing.Point(64, 135);
             this.textBoxOutputFile.Name = "textBoxOutputFile";
             this.textBoxOutputFile.Size = new System.Drawing.Size(652, 20);
-            this.textBoxOutputFile.TabIndex = 3;
+            this.textBoxOutputFile.TabIndex = 4;
             // 
             // label8
             // 
@@ -224,7 +224,7 @@ namespace GenericLogParser
             this.richTextStatus.Location = new System.Drawing.Point(8, 524);
             this.richTextStatus.Name = "richTextStatus";
             this.richTextStatus.Size = new System.Drawing.Size(736, 179);
-            this.richTextStatus.TabIndex = 19;
+            this.richTextStatus.TabIndex = 22;
             this.richTextStatus.Text = "";
             this.richTextStatus.WordWrap = false;
             // 
@@ -234,7 +234,7 @@ namespace GenericLogParser
             this.buttonEditOutput.Location = new System.Drawing.Point(636, 470);
             this.buttonEditOutput.Name = "buttonEditOutput";
             this.buttonEditOutput.Size = new System.Drawing.Size(108, 24);
-            this.buttonEditOutput.TabIndex = 17;
+            this.buttonEditOutput.TabIndex = 19;
             this.buttonEditOutput.Text = "&Edit Output";
             this.buttonEditOutput.Click += new System.EventHandler(this.buttonEditOutput_Click);
             // 
@@ -245,7 +245,9 @@ namespace GenericLogParser
             this.textBoxSearchIncludeText.Location = new System.Drawing.Point(64, 192);
             this.textBoxSearchIncludeText.Name = "textBoxSearchIncludeText";
             this.textBoxSearchIncludeText.Size = new System.Drawing.Size(560, 20);
-            this.textBoxSearchIncludeText.TabIndex = 7;
+            this.textBoxSearchIncludeText.TabIndex = 8;
+            this.textBoxSearchIncludeText.Enter += new System.EventHandler(this.textBoxSearchIncludeText_Enter);
+            this.textBoxSearchIncludeText.Leave += new System.EventHandler(this.textBoxSearchIncludeText_Leave);
             // 
             // label3
             // 
@@ -282,7 +284,7 @@ namespace GenericLogParser
             this.buttonChooseHeader.Location = new System.Drawing.Point(636, 161);
             this.buttonChooseHeader.Name = "buttonChooseHeader";
             this.buttonChooseHeader.Size = new System.Drawing.Size(108, 24);
-            this.buttonChooseHeader.TabIndex = 6;
+            this.buttonChooseHeader.TabIndex = 7;
             this.buttonChooseHeader.Text = "Choose &Header...";
             this.buttonChooseHeader.Click += new System.EventHandler(this.buttonChooseHeader_Click);
             // 
@@ -301,7 +303,7 @@ namespace GenericLogParser
             this.buttonClearExcludeList.Location = new System.Drawing.Point(636, 374);
             this.buttonClearExcludeList.Name = "buttonClearExcludeList";
             this.buttonClearExcludeList.Size = new System.Drawing.Size(108, 24);
-            this.buttonClearExcludeList.TabIndex = 14;
+            this.buttonClearExcludeList.TabIndex = 15;
             this.buttonClearExcludeList.Text = "Clea&r List";
             this.buttonClearExcludeList.Click += new System.EventHandler(this.buttonClearExcludeList_Click);
             // 
@@ -314,7 +316,7 @@ namespace GenericLogParser
             this.listBoxStatementsToExclude.Name = "listBoxStatementsToExclude";
             this.listBoxStatementsToExclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxStatementsToExclude.Size = new System.Drawing.Size(616, 95);
-            this.listBoxStatementsToExclude.TabIndex = 13;
+            this.listBoxStatementsToExclude.TabIndex = 14;
             this.listBoxStatementsToExclude.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxSearches_KeyUp);
             // 
             // label6
@@ -333,7 +335,9 @@ namespace GenericLogParser
             this.textBoxSearchExcludeText.Location = new System.Drawing.Point(64, 334);
             this.textBoxSearchExcludeText.Name = "textBoxSearchExcludeText";
             this.textBoxSearchExcludeText.Size = new System.Drawing.Size(560, 20);
-            this.textBoxSearchExcludeText.TabIndex = 11;
+            this.textBoxSearchExcludeText.TabIndex = 12;
+            this.textBoxSearchExcludeText.Enter += new System.EventHandler(this.textBoxSearchExcludeText_Enter);
+            this.textBoxSearchExcludeText.Leave += new System.EventHandler(this.textBoxSearchExcludeText_Leave);
             // 
             // buttonAddExcludeStatementToList
             // 
@@ -341,7 +345,7 @@ namespace GenericLogParser
             this.buttonAddExcludeStatementToList.Location = new System.Drawing.Point(636, 331);
             this.buttonAddExcludeStatementToList.Name = "buttonAddExcludeStatementToList";
             this.buttonAddExcludeStatementToList.Size = new System.Drawing.Size(108, 24);
-            this.buttonAddExcludeStatementToList.TabIndex = 12;
+            this.buttonAddExcludeStatementToList.TabIndex = 13;
             this.buttonAddExcludeStatementToList.Text = "Add To &List";
             this.buttonAddExcludeStatementToList.Click += new System.EventHandler(this.buttonAddExcludeStatementToList_Click);
             // 
@@ -361,7 +365,7 @@ namespace GenericLogParser
             this.textBoxInputFormat.Location = new System.Drawing.Point(88, 473);
             this.textBoxInputFormat.Name = "textBoxInputFormat";
             this.textBoxInputFormat.Size = new System.Drawing.Size(536, 20);
-            this.textBoxInputFormat.TabIndex = 15;
+            this.textBoxInputFormat.TabIndex = 18;
             // 
             // textBoxOutputFormat
             // 
@@ -370,7 +374,7 @@ namespace GenericLogParser
             this.textBoxOutputFormat.Location = new System.Drawing.Point(88, 499);
             this.textBoxOutputFormat.Name = "textBoxOutputFormat";
             this.textBoxOutputFormat.Size = new System.Drawing.Size(536, 20);
-            this.textBoxOutputFormat.TabIndex = 16;
+            this.textBoxOutputFormat.TabIndex = 20;
             // 
             // label9
             // 
@@ -387,7 +391,7 @@ namespace GenericLogParser
             this.buttonSaveOptions.Location = new System.Drawing.Point(636, 420);
             this.buttonSaveOptions.Name = "buttonSaveOptions";
             this.buttonSaveOptions.Size = new System.Drawing.Size(108, 24);
-            this.buttonSaveOptions.TabIndex = 45;
+            this.buttonSaveOptions.TabIndex = 16;
             this.buttonSaveOptions.Text = "&Save Options...";
             this.buttonSaveOptions.Click += new System.EventHandler(this.buttonSaveOptions_Click);
             // 
@@ -397,7 +401,7 @@ namespace GenericLogParser
             this.buttonLoadOptions.Location = new System.Drawing.Point(636, 445);
             this.buttonLoadOptions.Name = "buttonLoadOptions";
             this.buttonLoadOptions.Size = new System.Drawing.Size(108, 24);
-            this.buttonLoadOptions.TabIndex = 46;
+            this.buttonLoadOptions.TabIndex = 17;
             this.buttonLoadOptions.Text = "Load &Options...";
             this.buttonLoadOptions.Click += new System.EventHandler(this.buttonLoadOptions_Click);
             // 
@@ -409,7 +413,7 @@ namespace GenericLogParser
             this.textBoxHeaderRowSearchExpression.Location = new System.Drawing.Point(64, 164);
             this.textBoxHeaderRowSearchExpression.Name = "textBoxHeaderRowSearchExpression";
             this.textBoxHeaderRowSearchExpression.Size = new System.Drawing.Size(560, 20);
-            this.textBoxHeaderRowSearchExpression.TabIndex = 5;
+            this.textBoxHeaderRowSearchExpression.TabIndex = 6;
             this.textBoxHeaderRowSearchExpression.Text = global::GenericLogParser.Properties.Settings.Default.LastHeaderSearchExpression;
             // 
             // label10
@@ -427,7 +431,7 @@ namespace GenericLogParser
             this.textBoxOutputFileSuffix.Location = new System.Drawing.Point(64, 109);
             this.textBoxOutputFileSuffix.Name = "textBoxOutputFileSuffix";
             this.textBoxOutputFileSuffix.Size = new System.Drawing.Size(652, 20);
-            this.textBoxOutputFileSuffix.TabIndex = 47;
+            this.textBoxOutputFileSuffix.TabIndex = 3;
             this.textBoxOutputFileSuffix.TextChanged += new System.EventHandler(this.textBoxOutputFileSuffix_TextChanged);
             // 
             // MainForm
